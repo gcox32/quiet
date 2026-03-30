@@ -1,6 +1,7 @@
 import { redirect } from 'next/navigation'
 import { createClient } from '@/lib/supabase/server'
 import Nav from './nav'
+import QuoteCapture from './quote-capture'
 
 export default async function AppLayout({ children }: { children: React.ReactNode }) {
   const supabase = await createClient()
@@ -11,9 +12,10 @@ export default async function AppLayout({ children }: { children: React.ReactNod
   if (!user) redirect('/login')
 
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="relative flex flex-col min-h-screen">
       <main className="flex-1 overflow-y-auto pb-24">{children}</main>
       <Nav />
+      <QuoteCapture />
     </div>
   )
 }

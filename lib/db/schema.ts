@@ -29,3 +29,14 @@ export const journalEntries = pgTable('journal_entries', {
   createdAt: timestamp('created_at', { withTimezone: true }).defaultNow().notNull(),
   updatedAt: timestamp('updated_at', { withTimezone: true }).defaultNow().notNull(),
 })
+
+export const quotes = pgTable('quotes', {
+  id: uuid('id').defaultRandom().primaryKey(),
+  userId: uuid('user_id').notNull(),
+  text: text('text').notNull(),
+  author: text('author'),
+  year: text('year'),
+  source: text('source'),
+  context: text('context'),
+  createdAt: timestamp('created_at', { withTimezone: true }).defaultNow().notNull(),
+})
