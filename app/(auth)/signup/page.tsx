@@ -2,12 +2,12 @@
 
 import Link from 'next/link'
 import { useActionState } from 'react'
-import { signIn } from './actions'
+import { signUp } from './actions'
 
 type State = { error?: string } | null
 
-export default function LoginPage() {
-  const [state, formAction, pending] = useActionState<State, FormData>(signIn, null)
+export default function SignupPage() {
+  const [state, formAction, pending] = useActionState<State, FormData>(signUp, null)
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center px-6">
@@ -33,7 +33,7 @@ export default function LoginPage() {
             name="password"
             placeholder="password"
             required
-            autoComplete="current-password"
+            autoComplete="new-password"
             className="w-full bg-parchment-deep border border-border rounded-xl px-4 py-3.5 text-ink placeholder:text-accent-muted focus:border-accent transition-colors duration-500"
           />
 
@@ -46,14 +46,14 @@ export default function LoginPage() {
             disabled={pending}
             className="w-full bg-accent text-parchment rounded-xl px-4 py-3.5 font-medium transition-opacity duration-500 disabled:opacity-50 cursor-pointer"
           >
-            {pending ? 'Signing in…' : 'Sign in'}
+            {pending ? 'Creating account…' : 'Create account'}
           </button>
         </form>
 
         <p className="text-center text-sm text-ink-muted mt-6">
-          No account?{' '}
-          <Link href="/signup" className="text-ink underline underline-offset-2">
-            Create one
+          Already have an account?{' '}
+          <Link href="/login" className="text-ink underline underline-offset-2">
+            Sign in
           </Link>
         </p>
       </div>
