@@ -14,13 +14,13 @@ const lora = Lora({
 })
 
 export const metadata: Metadata = {
-  title: 'Quiet',
-  description: 'Am I not at all self-aware?',
+  title: 'quiet',
+  description: 'Even a fool who keeps silent is considered wise; when he closes his lips, he is deemed intelligent.',
   manifest: '/manifest.webmanifest',
   appleWebApp: {
     capable: true,
     statusBarStyle: 'default',
-    title: 'Quiet',
+    title: 'quiet',
     startupImage: '/apple-touch-icon.png',
   },
   icons: {

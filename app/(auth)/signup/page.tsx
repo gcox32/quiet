@@ -1,21 +1,26 @@
 'use client'
 
 import Link from 'next/link'
-import { useActionState } from 'react'
+import { useActionState, useMemo } from 'react'
 import { signUp } from './actions'
+import { verses } from '@/lib/verses'
 
 type State = { error?: string } | null
 
 export default function SignupPage() {
   const [state, formAction, pending] = useActionState<State, FormData>(signUp, null)
+  const verse = useMemo(() => verses[Math.floor(Math.random() * verses.length)], [])
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center px-6">
       <div className="w-full max-w-sm animate-breathe-in">
         <div className="text-center mb-10">
-          <h1 className="font-serif text-5xl text-ink mb-3 tracking-wide">Quiet</h1>
-          <p className="text-ink-muted leading-relaxed text-sm">
-            A space for stillness.
+          <h1 className="font-serif text-5xl text-ink mb-6 tracking-wide">quiet</h1>
+          <p className="font-serif text-ink-muted leading-relaxed text-sm italic mb-1">
+            {verse.text}
+          </p>
+          <p className="text-xs text-accent-muted tracking-wide">
+            {verse.reference} {verse.translation}
           </p>
         </div>
 

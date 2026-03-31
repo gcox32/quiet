@@ -2,9 +2,9 @@ import type { MetadataRoute } from 'next'
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: 'Quiet',
-    short_name: 'Quiet',
-    description: 'A space for stillness — scripture, prayer, and reflection.',
+    name: 'quiet',
+    short_name: 'quiet',
+    description: 'Even a fool who keeps silent is considered wise; when he closes his lips, he is deemed intelligent.',
     start_url: '/',
     display: 'standalone',
     background_color: '#F5EDD6',
