@@ -5,6 +5,7 @@ import { desc, eq } from 'drizzle-orm'
 import { redirect } from 'next/navigation'
 import PrayerForm from './prayer-form'
 import { updatePrayerStatus } from './actions'
+import Button from '@/components/button'
 
 type Prayer = {
   id: string
@@ -60,12 +61,13 @@ function PrayerCard({ prayer }: { prayer: Prayer }) {
           <form action={updatePrayerStatus}>
             <input type="hidden" name="id" value={prayer.id} />
             <input type="hidden" name="status" value={next} />
-            <button
+            <Button
               type="submit"
-              className="text-xs text-ink-muted underline underline-offset-2 cursor-pointer"
+              variant={prayer.status === 'active' ? 'secondary' : 'ghost'}
+              size="sm"
             >
               {nextLabel[prayer.status]}
-            </button>
+            </Button>
           </form>
         </div>
       </div>

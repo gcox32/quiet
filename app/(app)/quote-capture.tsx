@@ -1,8 +1,8 @@
 'use client'
 
-import { useCallback, useEffect, useRef, useState } from 'react'
+import { useActionState, useCallback, useEffect, useRef, useState } from 'react'
 import { addQuote, type QuoteFormState } from './quotes/actions'
-import { useActionState } from 'react'
+import Button from '@/components/button'
 
 type ButtonPos = { x: number; y: number }
 
@@ -126,13 +126,9 @@ export default function QuoteCapture() {
           >
             <div className="flex justify-between items-center mb-5">
               <h2 className="font-serif text-xl text-ink">Save Quote</h2>
-              <button
-                type="button"
-                onClick={closeModal}
-                className="text-ink-muted text-sm cursor-pointer"
-              >
+              <Button type="button" variant="ghost" size="sm" onClick={closeModal}>
                 Cancel
-              </button>
+              </Button>
             </div>
 
             <form ref={formRef} action={formAction} className="flex flex-col gap-4">
@@ -172,25 +168,23 @@ export default function QuoteCapture() {
                   />
                 </div>
               ) : (
-                <button
+                <Button
                   type="button"
+                  variant="ghost"
+                  size="sm"
                   onClick={() => setShowMeta(true)}
-                  className="self-start text-xs text-ink-muted underline underline-offset-2 cursor-pointer"
+                  className="self-start"
                 >
                   Add author, source…
-                </button>
+                </Button>
               )}
 
               {state?.error && <p className="text-sm text-red-800">{state.error}</p>}
 
               <div className="flex justify-end">
-                <button
-                  type="submit"
-                  disabled={pending}
-                  className="bg-accent text-parchment rounded-xl px-6 py-2.5 text-sm font-medium transition-opacity duration-500 disabled:opacity-50 cursor-pointer"
-                >
+                <Button type="submit" disabled={pending}>
                   {pending ? 'Saving…' : 'Save'}
-                </button>
+                </Button>
               </div>
             </form>
           </div>

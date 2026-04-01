@@ -4,6 +4,7 @@ import { scriptureNotes } from '@/lib/db/schema'
 import { desc, eq } from 'drizzle-orm'
 import { redirect } from 'next/navigation'
 import ScriptureForm from './scripture-form'
+import QuoteCapture from '../quote-capture'
 
 export default async function ScripturePage() {
   const supabase = await createClient()
@@ -75,6 +76,7 @@ export default async function ScripturePage() {
           </div>
         </section>
       )}
+      <QuoteCapture />
     </div>
   )
 }

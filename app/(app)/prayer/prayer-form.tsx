@@ -2,6 +2,7 @@
 
 import { useActionState, useEffect, useRef } from 'react'
 import { addPrayer } from './actions'
+import Button from '@/components/button'
 
 type State = { success: boolean; error?: string } | null
 
@@ -32,13 +33,9 @@ export default function PrayerForm() {
       )}
 
       <div className="flex justify-end">
-        <button
-          type="submit"
-          disabled={pending}
-          className="bg-accent text-parchment rounded-xl px-6 py-2.5 text-sm font-medium transition-opacity duration-500 disabled:opacity-50 cursor-pointer"
-        >
+        <Button type="submit" disabled={pending}>
           {pending ? 'Adding…' : 'Add Prayer'}
-        </button>
+        </Button>
       </div>
     </form>
   )

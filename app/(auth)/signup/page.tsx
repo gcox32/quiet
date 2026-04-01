@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { useActionState, useMemo } from 'react'
 import { signUp } from './actions'
 import { verses } from '@/lib/verses'
+import Button from '@/components/button'
 
 type State = { error?: string } | null
 
@@ -46,13 +47,9 @@ export default function SignupPage() {
             <p className="text-sm text-red-800 text-center">{state.error}</p>
           )}
 
-          <button
-            type="submit"
-            disabled={pending}
-            className="w-full bg-accent text-parchment rounded-xl px-4 py-3.5 font-medium transition-opacity duration-500 disabled:opacity-50 cursor-pointer"
-          >
+          <Button type="submit" disabled={pending} size="lg" fullWidth>
             {pending ? 'Creating account…' : 'Create account'}
-          </button>
+          </Button>
         </form>
 
         <p className="text-center text-sm text-ink-muted mt-6">

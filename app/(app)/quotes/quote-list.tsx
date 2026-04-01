@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { deleteQuote } from './actions'
+import Button from '@/components/button'
 
 type Quote = {
   id: string
@@ -65,12 +66,9 @@ export default function QuoteList({ quotes }: { quotes: Quote[] }) {
               <span className="ml-auto text-xs">{q.createdAt}</span>
             </figcaption>
             <form action={deleteQuote.bind(null, q.id)} className="mt-3">
-              <button
-                type="submit"
-                className="text-xs text-ink-muted underline underline-offset-2 cursor-pointer"
-              >
+              <Button type="submit" variant="danger" size="sm">
                 Remove
-              </button>
+              </Button>
             </form>
           </figure>
         ))}

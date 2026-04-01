@@ -2,6 +2,7 @@
 
 import { useActionState, useEffect, useRef, useState } from 'react'
 import { addQuote, type QuoteFormState } from './actions'
+import Button from '@/components/button'
 
 type Props = {
   initialText?: string
@@ -88,25 +89,23 @@ export default function QuoteForm({ initialText = '', onSuccess, compact = false
           </div>
         </div>
       ) : (
-        <button
+        <Button
           type="button"
+          variant="ghost"
+          size="sm"
           onClick={() => setShowMeta(true)}
-          className="self-start text-xs text-ink-muted underline underline-offset-2 cursor-pointer"
+          className="self-start"
         >
           Add author, source…
-        </button>
+        </Button>
       )}
 
       {state?.error && <p className="text-sm text-red-800">{state.error}</p>}
 
       <div className="flex justify-end">
-        <button
-          type="submit"
-          disabled={pending}
-          className="bg-accent text-parchment rounded-xl px-6 py-2.5 text-sm font-medium transition-opacity duration-500 disabled:opacity-50 cursor-pointer"
-        >
+        <Button type="submit" disabled={pending}>
           {pending ? 'Saving…' : 'Save Quote'}
-        </button>
+        </Button>
       </div>
     </form>
   )

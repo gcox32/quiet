@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { useActionState, useMemo } from 'react'
 import { signIn } from './actions'
 import { verses } from '@/lib/verses'
+import Button from '@/components/button'
 
 type State = { error?: string } | null
 
@@ -46,13 +47,9 @@ export default function LoginPage() {
             <p className="text-sm text-red-800 text-center">{state.error}</p>
           )}
 
-          <button
-            type="submit"
-            disabled={pending}
-            className="w-full bg-accent text-parchment rounded-xl px-4 py-3.5 font-medium transition-opacity duration-500 disabled:opacity-50 cursor-pointer"
-          >
+          <Button type="submit" disabled={pending} size="lg" fullWidth>
             {pending ? 'Signing in…' : 'Sign in'}
-          </button>
+          </Button>
         </form>
 
         <p className="text-center text-sm text-ink-muted mt-6">
